@@ -13,6 +13,9 @@
       "parser": "@typescript-eslint/parser",
       "sourceType": "module"
     },
+    "globals": {
+        "route": true
+    },
     "rules": {
       // warn rule
       "no-unused-vars": "warn",
