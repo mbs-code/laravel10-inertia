@@ -4,8 +4,9 @@ import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
 
-const isProd = process.env.NODE_ENV = 'production'
+const isProd = process.env.NODE_ENV === 'production'
 export default defineConfig({
   plugins: [
     laravel({
@@ -25,6 +26,7 @@ export default defineConfig({
     Components({
       dts: 'resources/ts/types/components.d.ts',
       dirs: ['resources/ts/components/**'],
+      resolvers: [PrimeVueResolver()],
     }),
 
     AutoImport({
