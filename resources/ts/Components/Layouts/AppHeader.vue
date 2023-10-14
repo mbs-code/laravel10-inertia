@@ -1,5 +1,5 @@
 <template>
-  <div class="p-1 pr-3 flex items-center gap-2 flex-wrap">
+  <div class="p-1 pr-3 flex items-center gap-2">
     <Button
       :pt="{ root: 'focus:shadow-none h-2', label: 'hidden' }"
       :icon=" sidebar ? 'pi pi-angle-left' : 'pi pi-bars'"
@@ -10,23 +10,11 @@
       @click="toggleSidebar"
     />
 
-    <div>
+    <div class="text-bold">
       {{ appConfig.name }}
     </div>
 
-    <Chip
-      v-if="appConfig.env !== 'production'"
-      :pt="{ label: '!m-0' }"
-      class="bg-teal-500 text-white"
-      :label="appConfig.env"
-    />
-
-    <Chip
-      v-if="appConfig.debug"
-      :pt="{ label: '!m-0' }"
-      class="bg-red-500 text-white"
-      label="DEBUG"
-    />
+    <DevChip />
 
     <div class="flex-grow" />
 
@@ -37,11 +25,24 @@
       severity="secondary"
       rounded
       outlined
+      @click="toggleMenu"
+    />
+
+    <Menu
+      ref="menuRef"
+      :pt="{
+        action: '!px-4 !py-2',
+        separator: 'border-b border-solid border-zinc-300',
+      }"
+      :model="items"
+      :popup="true"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+import Menu from 'primevue/menu'
+
 const props = defineProps<{
   sidebar: boolean
 }>()
@@ -64,4 +65,29 @@ const appConfig = computed(() => page.props.app)
 const toggleSidebar = () => {
   _sidebar.value = !_sidebar.value
 }
+
+const menuRef = ref<Menu>()
+const toggleMenu = (event: MouseEvent) => {
+  menuRef.value?.toggle(event)
+}
+
+const items = ref([
+  {
+    label: 'ダミー',
+    icon: 'pi pi-refresh',
+    command: () => {
+      console.log('test')
+    },
+  },
+  {
+    separator: true
+  },
+  {
+    label: 'ログアウト',
+    icon: 'pi pi-sign-out',
+    command: () => {
+      router.delete(route('login.destroy'))
+    }
+  },
+])
 </script>

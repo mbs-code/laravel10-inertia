@@ -1,21 +1,25 @@
 <template>
-  <div class="h-screen flex flex-col">
+  <div class="h-screen">
     <AppHeader
       v-model:sidebar="sidebar"
       class="
-        flex-shrink-0
         h-[var(--app-header-height)]
         border-b border-solid border-zinc-300
       "
     />
 
-    <div class="flex-grow flex">
+    <div
+      class="
+        h-[calc(100dvh-var(--app-header-height))]
+        flex
+      "
+    >
       <Transition name="sidebar">
         <AppSidebar
           v-if="sidebar"
           class="
             w-screen xs:w-[var(--app-sidebar-width)]
-            flex-shrink-0 overflow-x-auto overflow-y-screen
+            flex-shrink-0 overflow-x-auto overflow-y-auto
             border-r border-solid border-zinc-300
           "
         />
@@ -23,30 +27,11 @@
 
       <div
         class="
-          flex-grow overflow-x-auto overflow-y-screen
-          bg-blue-50
+          flex-grow overflow-x-auto overflow-y-auto
+          p-2 bg-blue-50
         "
       >
-        bodbodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodybodyy<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
-        body<br>
+        <slot />
       </div>
     </diV>
   </div>

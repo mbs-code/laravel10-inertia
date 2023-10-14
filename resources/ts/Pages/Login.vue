@@ -1,7 +1,15 @@
 <template>
-  <Card class="m-2 w-96" :pt="{ content: 'pb-0' }">
+  <Card class="w-96" :pt="{ content: 'pb-0' }">
     <template #title>
-      {{ appConfig.name }}
+      <div class="flex items-center gap-2">
+        <div>
+          {{ appConfig.name }}
+        </div>
+
+        <div class="flex-grow" />
+
+        <DevChip />
+      </div>
     </template>
 
     <template #content>
@@ -59,10 +67,6 @@ const canPost = computed(() =>
 )
 
 const submit = () => {
-  form.post(route('login.store'), {
-    onFinish: () => {
-      form.reset('password')
-    },
-  })
+  form.post(route('login.store'))
 }
 </script>

@@ -36,7 +36,7 @@ export default defineConfig({
         'vue',
         {
           '@inertiajs/vue3': [
-            'usePage', 'useForm',
+            'usePage', 'useForm', 'router',
           ],
         },
       ],

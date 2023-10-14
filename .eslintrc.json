@@ -24,10 +24,12 @@
         "vue/no-unused-vars": "warn",
         "require-await": "warn",
         "no-unreachable": "warn",
+
         // ignore rule
         "vue/multi-word-component-names": "off",
         "vue/no-multiple-template-root": "off",
         "vue/no-v-model-argument": "off",
+
         // prettier rule
         "quotes": [
             "warn",

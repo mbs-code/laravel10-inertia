@@ -19,18 +19,12 @@ use Inertia\Inertia;
 */
 
 Route::get('/login', [LoginController::class, 'view'])->name('login.view');
-Route::post('login', [LoginController::class, 'store'])->name('login.store');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::middleware('auth')->group(function () {
+    Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
+
     Route::get('/home', [HomeController::class, 'view'])->name('home.view');
-});
-
-Route::get('/menu', function () {
-    return Inertia::render('TestMenuLayout');
-});
-
-Route::get('/single', function () {
-    return Inertia::render('TestSingleLayout');
 });
 
 Route::get('/', function () {
