@@ -42,8 +42,6 @@
 </template>
 
 <script setup lang="ts">
-const page = usePage()
-
 const props = defineProps<{
   sidebar: boolean
 }>()
@@ -58,6 +56,7 @@ const _sidebar = computed({
   set: newValue => emit('update:sidebar', newValue)
 })
 
+const page = usePage()
 const appConfig = computed(() => page.props.app)
 
 ///

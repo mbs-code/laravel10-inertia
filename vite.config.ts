@@ -35,7 +35,9 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          '@inertiajs/vue3': ['usePage'],
+          '@inertiajs/vue3': [
+            'usePage', 'useForm',
+          ],
         },
       ],
       eslintrc: {

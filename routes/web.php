@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +17,13 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/login', [LoginController::class, 'view'])->name('login.view');
+Route::post('login', [LoginController::class, 'store'])->name('login.store');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [HomeController::class, 'view'])->name('home.view');
+});
 
 Route::get('/menu', function () {
     return Inertia::render('TestMenuLayout');
@@ -43,4 +52,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
