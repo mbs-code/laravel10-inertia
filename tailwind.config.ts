@@ -16,6 +16,22 @@ export default {
       fontFamily: {
         sans: ['Figtree', ...defaultTheme.fontFamily.sans],
       },
+
+      // breakpoint 追加
+      screens: {
+        xs: '420px',
+      },
+
+      // 100dvh 上書き
+      height: {
+        screen: ['100vh', '100dvh'],
+      },
+      minHeight: {
+        screen: ['100vh', '100dvh'],
+      },
+      maxHeight: {
+        screen: ['100vh', '100dvh'],
+      },
     },
   },
 
