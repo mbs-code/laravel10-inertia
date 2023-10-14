@@ -17,3 +17,11 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+auto-imports.d.ts
+components.d.ts
+.eslintrc-auto-import.json
+
+_ide_helper_models.php
+_ide_helper.php
+.phpstorm.meta.php
