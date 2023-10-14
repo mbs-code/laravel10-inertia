@@ -39,7 +39,6 @@ export default defineConfig({
     }),
 
     !isProd && eslint({
-      lintOnStart: true,
       include: 'resources/ts/**/*.{js,ts,vue}',
       fix: true,
     }),
