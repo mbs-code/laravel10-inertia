@@ -1,5 +1,6 @@
 import './bootstrap'
 import 'primevue/resources/themes/lara-light-blue/theme.css'
+import 'primeicons/primeicons.css'
 import '../css/app.css'
 
 import { createApp, h, DefineComponent } from 'vue'
