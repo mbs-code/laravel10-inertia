@@ -20,6 +20,10 @@ Route::get('/menu', function () {
     return Inertia::render('TestMenuLayout');
 });
 
+Route::get('/single', function () {
+    return Inertia::render('TestSingleLayout');
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
