@@ -32,7 +32,12 @@ export default defineConfig({
     AutoImport({
       dts: 'resources/ts/types/auto-imports.d.ts',
       dirs: ['resources/ts/composables/**'],
-      imports: ['vue'],
+      imports: [
+        'vue',
+        {
+          '@inertiajs/vue3': ['usePage'],
+        },
+      ],
       eslintrc: {
         enabled: true,
       },

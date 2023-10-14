@@ -1,3 +1,23 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+/* ref: https://zenn.dev/itayuri/articles/653eb940fff12f */
+::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+::-webkit-scrollbar-thumb {
+    background: #173F4688;
+    border-radius: 0.5rem;
+    border: 0.125rem solid transparent; /* 疑似margin */
+    background-clip: padding-box; /* 背景の切り取り */
+}
+::-webkit-scrollbar-track {
+    background: #173F4611;
+    margin: 0.125rem; /* 上下の余白 */
+}
+::-webkit-scrollbar-corner {
+    background: #173F4622;
+}
