@@ -9,7 +9,7 @@
 import sanitizeHtml from 'sanitize-html'
 import DashboardLayout from '@/Layouts/DashboardLayout.vue'
 
-defineOptions({ layout: DashboardLayout })
+defineOptions({ layout: DashboardLayout, title: 'ホーム' })
 
 const props = defineProps<{
   readme: string

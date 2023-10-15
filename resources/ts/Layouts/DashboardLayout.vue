@@ -1,7 +1,10 @@
 <template>
   <div class="h-screen">
+    <Head :title="slotTitle" />
+
     <AppHeader
       v-model:sidebar="sidebar"
+      :title="slotTitle"
       class="
         h-[var(--app-header-height)]
         border-b border-solid border-zinc-300
@@ -38,7 +41,17 @@
 </template>
 
 <script setup lang="ts">
+import { Head } from '@inertiajs/vue3'
+
 const sidebar = ref<boolean>(false)
+
+const slot = useSlots()
+const slotTitle = computed(() =>
+  // defineOptions にあるタイトルを抜き出す
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  slot.default!()[0]?.type?.title
+)
 </script>
 
 <style lang="scss">

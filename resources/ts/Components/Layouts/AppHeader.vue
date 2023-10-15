@@ -10,13 +10,17 @@
       @click="toggleSidebar"
     />
 
-    <div class="text-bold">
+    <div class="px-2 text-xl font-bold">
       {{ appConfig.name }}
     </div>
 
-    <DevChip />
+    <div class="px-2 text-xl">
+      {{ title }}
+    </div>
 
     <div class="flex-grow" />
+
+    <DevChip />
 
     <Button
       :pt="{ root: 'focus:shadow-none h-2', label: 'hidden' }"
@@ -45,6 +49,7 @@ import Menu from 'primevue/menu'
 
 const props = defineProps<{
   sidebar: boolean
+  title?: string
 }>()
 
 // eslint-disable-next-line func-call-spacing

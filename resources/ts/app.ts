@@ -17,7 +17,7 @@ import LocaleJa from './ja.json'
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
 createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
+  title: (title) => title ? `${title} - ${appName}` : `${appName}`,
   resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob<DefineComponent>('./Pages/**/*.vue')),
   setup ({ el, App, props, plugin }) {
     const pinia = createPinia()
