@@ -39,7 +39,6 @@
             type="submit"
             label="ログイン"
             size="small"
-            :disabled="!canPost"
           />
         </FormField>
       </form>
@@ -61,10 +60,6 @@ const form = useForm({
   email: '',
   password: '',
 })
-
-const canPost = computed(() =>
-  form.email && form.password
-)
 
 const submit = () => {
   form.post(route('login.store'))

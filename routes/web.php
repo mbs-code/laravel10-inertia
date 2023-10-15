@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -18,6 +18,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/', [AppController::class, 'view'])->name('app.view');
+
 Route::get('/login', [LoginController::class, 'view'])->name('login.view');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
@@ -25,15 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
     Route::get('/home', [HomeController::class, 'view'])->name('home.view');
-});
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
 });
 
 Route::get('/dashboard', function () {
