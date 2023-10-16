@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\PasswordForgotController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,12 @@ Route::get('/', [AppController::class, 'view'])->name('app.view');
 
 Route::get('/login', [LoginController::class, 'view'])->name('login.view');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+Route::get('/password-forgot', [PasswordForgotController::class, 'view'])->name('passwordForgot.view');
+Route::post('/password-forgot', [PasswordForgotController::class, 'store'])->name('passwordForgot.store');
+
+// Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+// ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');

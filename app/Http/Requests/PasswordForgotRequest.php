@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 
-class LoginRequest extends FormRequest
+class PasswordForgotRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,8 +16,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string'],
-            'password' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
         ];
     }
 
@@ -25,16 +24,19 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'メールアドレス',
-            'password' => 'パスワード',
         ];
     }
 
     public function execute(): void
     {
-        // ログイン処理
-        if (! Auth::attempt($this->only('email', 'password'))) {
+        // メール送信処理の実行
+        $status = Password::sendResetLink(
+            $this->only('email')
+        );
+
+        if ($status !== Password::RESET_LINK_SENT) {
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => [trans($status)],
             ]);
         }
     }

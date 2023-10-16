@@ -1,19 +1,20 @@
 <template>
   <Card class="w-[32rem]" :pt="{ content: 'pb-0' }">
     <template #title>
-      <div class="flex items-center gap-2">
+      <div class="flex gap-2">
         <div>
-          {{ appConfig.name }}
+          パスワードのリセット
         </div>
-
-        <div class="flex-grow" />
-
-        <DevChip />
       </div>
     </template>
 
     <template #content>
-      <form class="flex flex-col gap-1" @submit.prevent="submit">
+      <form class="flex flex-col gap-2" @submit.prevent="submit">
+        <div class="mb-2">
+          ご登録のメールアドレスを入力してください。
+          パスワード再設定用のURLをお送りします。
+        </div>
+
         <FormField v-slot="slotProps" label="メール" :error="form.errors?.email">
           <InputText
             v-model="form.email"
@@ -24,21 +25,10 @@
           />
         </FormField>
 
-        <FormField v-slot="slotProps" label="パスワード" :error="form.errors?.password">
-          <InputText
-            v-model="form.password"
-            v-bind="slotProps"
-            name="password"
-            type="password"
-            size="small"
-          />
-        </FormField>
-
         <div class="h-10 flex items-center gap-2">
-          <Link :href="route('passwordForgot.view')">
+          <Link :href="route('login.view')">
             <small>
-              パスワードをお忘れの方は
-              <span class="underline text-blue-500">こちら</span>
+              <span class="underline text-blue-500">ログインページに戻る</span>
             </small>
           </Link>
 
@@ -46,7 +36,7 @@
 
           <Button
             type="submit"
-            label="ログイン"
+            label="送信"
             size="small"
           />
         </div>
@@ -61,17 +51,13 @@ import CenterLayout from '@/Layouts/CenterLayout.vue'
 
 defineOptions({ layout: CenterLayout })
 
-const page = usePage()
-const appConfig = computed(() => page.props.app)
-
-///
+// ///
 
 const form = useForm({
   email: '',
-  password: '',
 })
 
 const submit = () => {
-  form.post(route('login.store'))
+  form.post(route('passwordForgot.store'))
 }
 </script>
