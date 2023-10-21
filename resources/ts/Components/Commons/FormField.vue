@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-1">
     <div class="flex max-xs:flex-col xs:items-center gap-1">
-      <label class="xs:w-[6rem]">{{ label }}</label>
+      <label class="xs:w-[7rem]">{{ label }}</label>
 
       <div class="flex-grow flex justify-end">
         <slot :class="['w-full', {'p-invalid': hasError }]" />
@@ -10,7 +10,7 @@
 
     <small
       v-if="!hideDetails"
-      class="h-5 xs:ml-[6.25rem]"
+      class="h-5 xs:ml-[7.25rem]"
       :class="{ 'text-red-500': hasError }"
     >
       {{ message }}
@@ -27,8 +27,9 @@ const props = defineProps<{
 }>()
 
 const errors = computed(() =>
+  // 空は消して配列にする
   Array.isArray(props.error)
-    ? props.error
+    ? props.error.filter(item => item)
     : (props.error ? [props.error] : [])
 )
 

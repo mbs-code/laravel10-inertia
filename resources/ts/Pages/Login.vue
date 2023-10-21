@@ -14,7 +14,7 @@
 
     <template #content>
       <form class="flex flex-col gap-1" @submit.prevent="submit">
-        <FormField v-slot="slotProps" label="メール" :error="form.errors?.email">
+        <FormField v-slot="slotProps" label="メールアドレス" :error="form.errors?.email">
           <InputText
             v-model="form.email"
             v-bind="slotProps"
@@ -35,7 +35,7 @@
         </FormField>
 
         <div class="h-10 flex items-center gap-2">
-          <Link :href="route('passwordForgot.view')">
+          <Link :href="route('password_forgot.view')">
             <small>
               パスワードをお忘れの方は
               <span class="underline text-blue-500">こちら</span>

@@ -15,7 +15,7 @@
           パスワード再設定用のURLをお送りします。
         </div>
 
-        <FormField v-slot="slotProps" label="メール" :error="form.errors?.email">
+        <FormField v-slot="slotProps" label="メールアドレス" :error="form.errors?.email">
           <InputText
             v-model="form.email"
             v-bind="slotProps"
@@ -58,6 +58,6 @@ const form = useForm({
 })
 
 const submit = () => {
-  form.post(route('passwordForgot.store'))
+  form.post(route('password_forgot.store'))
 }
 </script>

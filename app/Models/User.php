@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function toDump()
+    {
+        return "User [{$this->id}] {$this->name} {$this->email}";
+    }
 }

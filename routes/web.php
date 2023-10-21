@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\PasswordForgotController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,11 +25,11 @@ Route::get('/', [AppController::class, 'view'])->name('app.view');
 Route::get('/login', [LoginController::class, 'view'])->name('login.view');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
-Route::get('/password-forgot', [PasswordForgotController::class, 'view'])->name('passwordForgot.view');
-Route::post('/password-forgot', [PasswordForgotController::class, 'store'])->name('passwordForgot.store');
+Route::get('/password-forgot', [PasswordForgotController::class, 'view'])->name('password_forgot.view');
+Route::post('/password-forgot', [PasswordForgotController::class, 'store'])->name('password_forgot.store');
 
-// Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-// ->name('password.reset');
+Route::get('/password-reset', [PasswordResetController::class, 'view'])->name('password_reset.view');
+Route::post('/password-reset', [PasswordResetController::class, 'store'])->name('password_reset.store');
 
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
