@@ -14,7 +14,7 @@
           パスワードを変更しました。
         </div>
 
-        <div class="h-10 flex items-center gap-2">
+        <div class="min-h-10 flex items-center gap-2 flex-wrap">
           <Link :href="route('login.view')">
             <small>
               <span class="underline text-blue-500">ログインページに戻る</span>

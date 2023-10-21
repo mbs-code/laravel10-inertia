@@ -34,7 +34,7 @@
           />
         </FormField>
 
-        <div class="h-10 flex items-center gap-2">
+        <div class="min-h-10 flex items-center gap-2 flex-wrap">
           <Link :href="route('password_forgot.view')">
             <small>
               パスワードをお忘れの方は
