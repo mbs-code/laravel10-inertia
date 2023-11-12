@@ -31,10 +31,13 @@
       <div
         class="
           flex-grow overflow-x-auto overflow-y-auto
+          flex justify-center
           p-2 bg-blue-50
         "
       >
-        <slot />
+        <div :class="{ 'max-w-[50rem]': !slotFluid }">
+          <slot />
+        </div>
       </div>
     </diV>
   </div>
@@ -52,11 +55,17 @@ const slotTitle = computed(() =>
   // @ts-ignore
   slot.default!()[0]?.type?.title
 )
+const slotFluid = computed(() =>
+  // defineOptions にあるfluidを抜き出す
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  Boolean(slot.default!()[0]?.type?.fluid)
+)
 </script>
 
 <style lang="scss">
 :root {
-  --app-header-height: 2.5rem;
+  --app-header-height: 3rem;
   --app-sidebar-width: 12rem;
 }
 

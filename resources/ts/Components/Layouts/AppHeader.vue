@@ -1,7 +1,7 @@
 <template>
   <div class="p-1 pr-3 flex items-center gap-2">
     <Button
-      :pt="{ root: 'focus:shadow-none h-2', label: 'hidden' }"
+      :pt="{ root: 'focus:shadow-none h-8', label: 'hidden' }"
       :icon=" sidebar ? 'pi pi-angle-left' : 'pi pi-bars'"
       size="small"
       severity="secondary"
@@ -23,7 +23,7 @@
     <DevChip />
 
     <Button
-      :pt="{ root: 'focus:shadow-none h-2', label: 'hidden' }"
+      :pt="{ root: 'focus:shadow-none h-8', label: 'hidden' }"
       icon="pi pi-user"
       size="small"
       severity="secondary"
