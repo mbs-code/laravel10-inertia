@@ -3,7 +3,8 @@
     <template #title>
       <div class="flex items-center gap-2">
         <div>
-          {{ appConfig.name }}
+          <img class="max-h-8" src="@@/assets/logo.png">
+          <!-- {{ appConfig.name }} -->
         </div>
 
         <div class="flex-grow" />

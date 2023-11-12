@@ -11,7 +11,8 @@
     />
 
     <div class="px-2 text-xl font-bold">
-      {{ appConfig.name }}
+      <img class="max-h-8" src="@@/assets/logo.png">
+      <!-- {{ appConfig.name }} -->
     </div>
 
     <div class="px-2 text-xl">
