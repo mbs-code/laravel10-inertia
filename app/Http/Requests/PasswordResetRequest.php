@@ -22,8 +22,8 @@ class PasswordResetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['nullable', 'string', 'email'],
             'token' => ['nullable','string'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'confirmed', RulesPassword::defaults()],
         ];
     }
@@ -31,8 +31,9 @@ class PasswordResetRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'email' => 'メールアドレス',
             'token' => 'トークン',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
         ];
     }
 

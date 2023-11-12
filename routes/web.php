@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,6 +31,9 @@ Route::post('/password-forgot', [PasswordForgotController::class, 'store'])->nam
 
 Route::get('/password-reset', [PasswordResetController::class, 'view'])->name('password_reset.view');
 Route::post('/password-reset', [PasswordResetController::class, 'store'])->name('password_reset.store');
+
+Route::get('/register', [RegisterController::class, 'view'])->name('register.view');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::middleware('auth')->group(function () {
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
