@@ -25,13 +25,13 @@ export default defineConfig({
 
     Components({
       dts: 'resources/ts/types/components.d.ts',
-      dirs: ['resources/ts/components/**'],
+      dirs: ['resources/ts/Components/**'],
       resolvers: [PrimeVueResolver()],
     }),
 
     AutoImport({
       dts: 'resources/ts/types/auto-imports.d.ts',
-      dirs: ['resources/ts/composables/**'],
+      dirs: ['resources/ts/Composables/**'],
       imports: [
         'vue',
         {
@@ -54,6 +54,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': 'resources/ts',
+      '@@': 'resources',
     },
   },
 })

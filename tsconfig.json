@@ -12,9 +12,8 @@
         "noEmit": true,
         "skipLibCheck": true,
         "paths": {
-            "@/*": [
-                "./resources/ts/*"
-            ]
+            "@/*": ["./resources/ts/*"],
+            "@@/*": ["./resources/*"],
         }
     },
     "include": [
