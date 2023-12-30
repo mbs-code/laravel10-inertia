@@ -15,6 +15,8 @@
       <!-- {{ appConfig.name }} -->
     </div>
 
+    {{ message }}
+
     <div class="px-2 text-xl">
       {{ title }}
     </div>
@@ -65,6 +67,8 @@ const _sidebar = computed({
 
 const page = usePage()
 const appConfig = computed(() => page.props.app)
+
+const message = computed(() => page.props.flash.message)
 
 ///
 

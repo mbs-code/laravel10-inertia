@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\EmailVerifyController;
 use App\Http\Controllers\PasswordForgotController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -36,6 +37,8 @@ Route::get('/register', [RegisterController::class, 'view'])->name('register.vie
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/email-verify', [EmailVerifyController::class, 'view'])->name('email_verify.view');
+
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
     Route::get('/home', [HomeController::class, 'view'])->name('home.view');

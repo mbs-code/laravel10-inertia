@@ -32,9 +32,10 @@ class RegisterRequest extends FormRequest
 
     public function execute(User $user): void
     {
+        $beforeEmail = $user->email;
+
         // ユーザーの新規作成
-        $user = $user
-            ->fill($this->validated())
+        $user->fill($this->validated())
             ->fill(['password' => Hash::make($this->password)])
             ->save();
 
@@ -43,5 +44,14 @@ class RegisterRequest extends FormRequest
 
         // ログインさせる
         Auth::login($user);
+
+        // もしemailを変更していたら、認証用メール送信
+        if ($beforeEmail !== $user->email) {
+            $user->forceFill([
+                'email_verified_at' => null,
+            ])->save();
+
+            $user->sendEmailVerificationNotification();
+        }
     }
 }

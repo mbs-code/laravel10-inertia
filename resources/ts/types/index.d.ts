@@ -4,6 +4,9 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
   auth: {
     user: User
   }
+  flash: {
+    message?: string
+  }
   app: {
     name: string
     env: string
